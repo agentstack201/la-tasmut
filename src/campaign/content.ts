@@ -4,6 +4,7 @@ export const LINKS = {
   apple: "https://apps.apple.com/sa/app/id1085635249",
   moi: "https://www.moi.gov.sa",
   university: "https://www.ub.edu.sa",
+  nca: "https://nca.gov.sa/ar",
   call911: "tel:911",
   call999: "tel:999",
 } as const;

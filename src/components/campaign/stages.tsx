@@ -38,14 +38,14 @@ const HABIT_KEY = "la-tasmut-habits-v1";
 
 type Go = (id: StationId) => void;
 
-const HOTSPOTS: { id: StationId; title: string; fact: string }[] = [
-  { id: "define", title: "التعريف", fact: "تهديد مقابل مال أو خضوع" },
-  { id: "effects", title: "الآثار", fact: "نفس، سمعة، ودليل يضيع" },
-  { id: "law", title: "العقوبات", fact: "مادة 3 ومادة 5 بنص النظام" },
-  { id: "shield", title: "الوقاية", fact: "خمس عادات تحفظك" },
-  { id: "report", title: "الإبلاغ", fact: "كلنا أمن و911 و999" },
-  { id: "scenario", title: "موقف", fact: "رسالة تهديد… ماذا تفعل؟" },
-  { id: "quiz", title: "اختبر نفسك", fact: "خمس أسئلة ثم النتيجة" },
+const HOTSPOTS: { id: StationId; title: string; fact: string; art: string }[] = [
+  { id: "define", title: "التعريف", fact: "تهديد مقابل مال أو خضوع", art: "/art/sticker-phone.jpg" },
+  { id: "effects", title: "الآثار", fact: "نفس، سمعة، ودليل يضيع", art: "/art/sticker-calm.jpg" },
+  { id: "law", title: "العقوبات", fact: "مادة 3 ومادة 5 بنص النظام", art: "/art/sticker-law.jpg" },
+  { id: "shield", title: "الوقاية", fact: "خمس عادات تحفظك", art: "/art/sticker-shield.jpg" },
+  { id: "report", title: "الإبلاغ", fact: "كلنا أمن و911 و999", art: "/art/sticker-report.jpg" },
+  { id: "scenario", title: "موقف", fact: "رسالة تهديد… ماذا تفعل؟", art: "/art/sticker-phone.jpg" },
+  { id: "quiz", title: "اختبر نفسك", fact: "خمس أسئلة ثم النتيجة", art: "/art/sticker-law.jpg" },
 ];
 
 const DIAL = [
@@ -59,7 +59,27 @@ export function BoardStage({ onGo }: { onGo: Go }) {
   const active = DIAL.find((item) => item.id === dial) ?? DIAL[0];
 
   return (
-    <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+    <div className="space-y-6">
+      <figure className="relative overflow-hidden rounded-card border border-line">
+        <img
+          src="/art/hero.jpg"
+          alt="درع يحمي الحرم الجامعي من تهديد الهاتف"
+          className="h-52 w-full object-cover sm:h-72"
+        />
+        <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-card/95 px-3 py-2">
+          <a href={LINKS.university} target="_blank" rel="noopener noreferrer" className="min-w-0">
+            <img src="/brands/ub-logo.svg" alt="شعار جامعة بيشة" className="h-12 w-auto max-w-48 object-contain sm:h-14" />
+          </a>
+          <a href={LINKS.nca} target="_blank" rel="noopener noreferrer" className="shrink-0">
+            <img
+              src="/brands/nca-logo.png"
+              alt="شعار الهيئة الوطنية للأمن السيبراني"
+              className="h-16 w-auto object-contain sm:h-20"
+            />
+          </a>
+        </div>
+      </figure>
+      <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
       <div>
         <p className="text-sm font-semibold text-pine">
           {IDENTITY.college} · {IDENTITY.university}
@@ -132,13 +152,16 @@ export function BoardStage({ onGo }: { onGo: Go }) {
               <button
                 type="button"
                 onClick={() => onGo(spot.id)}
-                className="flex h-full min-h-20 w-full flex-col items-start rounded-card border border-line bg-card px-4 py-3 text-start transition-transform duration-150 ease-out hover:border-pine active:scale-[0.96]"
+                className="flex h-full min-h-20 w-full items-center gap-3 rounded-card border border-line bg-card px-3 py-3 text-start transition-transform duration-150 ease-out hover:border-pine active:scale-[0.96]"
               >
-                <span className="font-display text-sm font-semibold text-pine">
-                  {String(index + 1).padStart(2, "0")}
+                <img src={spot.art} alt="" className="size-16 shrink-0 rounded-2xl object-cover" />
+                <span className="min-w-0">
+                  <span className="font-display text-sm font-semibold text-pine">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="mt-0.5 block text-lg font-semibold text-ink">{spot.title}</span>
+                  <span className="block text-sm text-muted">{spot.fact}</span>
                 </span>
-                <span className="mt-1 text-lg font-semibold text-ink">{spot.title}</span>
-                <span className="text-sm text-muted">{spot.fact}</span>
               </button>
             </li>
           ))}
@@ -167,6 +190,7 @@ export function BoardStage({ onGo }: { onGo: Go }) {
         </dl>
       </div>
     </div>
+    </div>
   );
 }
 
@@ -180,6 +204,8 @@ export function DefineStage() {
         index="01 — التعريف"
         title="ما الابتزاز الإلكتروني؟"
         lede="الجملة التالية من مادة الحملة. اضغط كل عبارة مظللة لتفتح معناها، لا لقراءتها كمطوية ثابتة."
+        art="/art/sticker-phone.jpg"
+        artAlt="ملصق هاتف مكسور السلسلة"
       />
       <p className="max-w-3xl text-xl leading-loose text-ink md:text-2xl">
         الابتزاز الإلكتروني هو{" "}
@@ -248,6 +274,8 @@ export function EffectsStage() {
         index="02 — الآثار"
         title="ماذا يخلّف الابتزاز؟"
         lede="اضغط كل أثر. الأثر النفسي حقيقي، لكن التأخر أو الرد الخاطئ هو ما يضعف موقفك القانوني — لا أن تكون ضحية."
+        art="/art/sticker-calm.jpg"
+        artAlt="ملصق التعافي من العزلة"
       />
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)]">
         <div className="space-y-5">
@@ -309,6 +337,8 @@ export function LawStage() {
         index="03 — القوانين والعقوبات"
         title="نظام مكافحة الجرائم المعلوماتية"
         lede="صدر بالمرسوم الملكي رقم م/17 وتاريخ 8/3/1428هـ. الأرقام هنا من نص المواد، لا من العناوين المختصرة المتداولة. اضغط المادة ثم الصورة الجرمية."
+        art="/art/sticker-law.jpg"
+        artAlt="ملصق ميزان العدالة"
       />
       <div className="flex flex-wrap gap-2" role="tablist" aria-label="مواد النظام">
         {articles.map((item) => {
@@ -429,6 +459,8 @@ export function ShieldStage() {
         index="04 — الوقاية"
         title="خمس عادات تحميك"
         lede="علّم ما تطبّقه فعلًا. التقدم يُحفظ في هذا المتصفح، والشرح يفتح تحت كل عادة."
+        art="/art/sticker-shield.jpg"
+        artAlt="ملصق ترس الحماية"
       />
       <p className="mb-4 font-display text-3xl font-semibold text-ink" aria-live="polite">
         {done} من {HABITS.length}
@@ -512,6 +544,8 @@ export function ReportStage() {
         index="05 — الإبلاغ"
         title="أبلغ فورًا ولا تتأخر"
         lede="كل تأخير يزيد الضرر. الأزرار التالية روابط حقيقية: متجر التطبيق، الاتصال، ونص النظام. ليست صورًا ثابتة."
+        art="/art/sticker-report.jpg"
+        artAlt="ملصق حفظ الدليل والإبلاغ"
       />
       <div className="grid gap-2 sm:grid-cols-2">
         <OutLink href={LINKS.play} icon={<Smartphone className="size-4" aria-hidden />} className="w-full">
@@ -614,6 +648,8 @@ export function ScenarioStage() {
         index="06 — موقف تفاعلي"
         title="وصلك هذا التهديد. ماذا تفعل؟"
         lede="اختر ردك. كل مسار يفتح نتيجة مختلفة، والمسار الصحيح ينقلك إلى روابط الإبلاغ نفسها."
+        art="/art/sticker-phone.jpg"
+        artAlt="ملصق رفض الابتزاز"
       />
       <div className="mx-auto max-w-md rounded-[1.75rem] border border-ink bg-ink p-3 text-card">
         <div className="rounded-[1.25rem] bg-pine-deep px-4 py-4">
@@ -707,6 +743,8 @@ export function QuizStage() {
         index="07 — اختبر"
         title="هل تملك الإجابة قبل أن تحتاجها؟"
         lede="خمس أسئلة من مادة الحملة ونص النظام. أجب ثم اعرض النتيجة مع سبب كل إجابة."
+        art="/art/sticker-law.jpg"
+        artAlt="ملصق ميزان العدالة"
       />
       <ol className="space-y-5">
         {QUIZ.map((question, qIndex) => (

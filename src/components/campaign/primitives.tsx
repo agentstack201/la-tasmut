@@ -49,18 +49,31 @@ export function StageHeader({
   index,
   title,
   lede,
+  art,
+  artAlt,
 }: {
   index: string;
   title: string;
   lede: string;
+  art?: string;
+  artAlt?: string;
 }) {
   return (
-    <header className="mb-6 max-w-2xl">
-      <p className="text-sm font-semibold text-pine">{index}</p>
-      <h2 className="mt-1 text-3xl font-semibold text-ink md:text-4xl" tabIndex={-1}>
-        {title}
-      </h2>
-      <p className="mt-3 text-base leading-relaxed text-muted">{lede}</p>
+    <header className="mb-6 flex items-start gap-4">
+      <div className="min-w-0 max-w-2xl flex-1">
+        <p className="text-sm font-semibold text-pine">{index}</p>
+        <h2 className="mt-1 text-3xl font-semibold text-ink md:text-4xl" tabIndex={-1}>
+          {title}
+        </h2>
+        <p className="mt-3 text-base leading-relaxed text-muted">{lede}</p>
+      </div>
+      {art ? (
+        <img
+          src={art}
+          alt={artAlt ?? ""}
+          className="size-24 shrink-0 rounded-3xl border border-line object-cover shadow-sm sm:size-36"
+        />
+      ) : null}
     </header>
   );
 }

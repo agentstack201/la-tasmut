@@ -61,9 +61,7 @@ export function CampaignApp({ station, onGo }: { station: StationId; onGo: (id: 
       <header className="no-print sticky top-0 z-30 border-b border-line bg-paper/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
           <button type="button" onClick={() => onGo("board")} className="flex items-center gap-3 text-start">
-            <span className="grid size-11 shrink-0 place-items-center rounded-full border border-pine font-display text-xs font-semibold text-pine">
-              1428
-            </span>
+            <img src="/brands/ub-logo.svg" alt="جامعة بيشة" className="h-11 w-auto max-w-44 object-contain" />
             <span>
               <span className="block font-display text-lg font-semibold leading-none text-ink">لا تصمت</span>
               <span className="mt-1 block text-xs text-muted">إنفوجرافيك تفاعلي</span>
