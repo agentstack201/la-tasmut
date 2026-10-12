@@ -54,7 +54,7 @@ export function StageHeader({
 }: {
   index: string;
   title: string;
-  lede: string;
+  lede?: string;
   art?: string;
   artAlt?: string;
 }) {
@@ -65,7 +65,7 @@ export function StageHeader({
         <h2 className="mt-1 text-3xl font-semibold text-ink md:text-4xl" tabIndex={-1}>
           {title}
         </h2>
-        <p className="mt-3 text-base leading-relaxed text-muted">{lede}</p>
+        {lede ? <p className="mt-3 text-base leading-relaxed text-muted">{lede}</p> : null}
       </div>
       {art ? (
         <img

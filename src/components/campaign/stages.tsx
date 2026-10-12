@@ -85,9 +85,6 @@ export function BoardStage({ onGo }: { onGo: Go }) {
           {IDENTITY.college} · {IDENTITY.university}
         </p>
         <h1 className="mt-2 text-4xl font-semibold text-ink md:text-6xl">لا تصمت</h1>
-        <p className="mt-3 max-w-xl text-lg leading-relaxed text-ink">
-          القانون يحميك من الابتزاز الإلكتروني. هذه لوحة تفاعلية: اضغط العقوبة، افتح نص النظام، وبلّغ من الأزرار.
-        </p>
 
         <div className="mt-6 rounded-card border border-line bg-card p-4">
           <p className="text-sm font-semibold text-muted">اضغط نوع الجريمة لترى حدها الأعلى</p>
@@ -203,7 +200,6 @@ export function DefineStage() {
       <StageHeader
         index="01 — التعريف"
         title="ما الابتزاز الإلكتروني؟"
-        lede="الجملة التالية من مادة الحملة. اضغط كل عبارة مظللة لتفتح معناها، لا لقراءتها كمطوية ثابتة."
         art="/art/sticker-phone.jpg"
         artAlt="ملصق هاتف مكسور السلسلة"
       />
@@ -273,7 +269,6 @@ export function EffectsStage() {
       <StageHeader
         index="02 — الآثار"
         title="ماذا يخلّف الابتزاز؟"
-        lede="اضغط كل أثر. الأثر النفسي حقيقي، لكن التأخر أو الرد الخاطئ هو ما يضعف موقفك القانوني — لا أن تكون ضحية."
         art="/art/sticker-calm.jpg"
         artAlt="ملصق التعافي من العزلة"
       />
@@ -336,7 +331,6 @@ export function LawStage() {
       <StageHeader
         index="03 — القوانين والعقوبات"
         title="نظام مكافحة الجرائم المعلوماتية"
-        lede="صدر بالمرسوم الملكي رقم م/17 وتاريخ 8/3/1428هـ. الأرقام هنا من نص المواد، لا من العناوين المختصرة المتداولة. اضغط المادة ثم الصورة الجرمية."
         art="/art/sticker-law.jpg"
         artAlt="ملصق ميزان العدالة"
       />
@@ -458,7 +452,6 @@ export function ShieldStage() {
       <StageHeader
         index="04 — الوقاية"
         title="خمس عادات تحميك"
-        lede="علّم ما تطبّقه فعلًا. التقدم يُحفظ في هذا المتصفح، والشرح يفتح تحت كل عادة."
         art="/art/sticker-shield.jpg"
         artAlt="ملصق ترس الحماية"
       />
@@ -647,7 +640,6 @@ export function ScenarioStage() {
       <StageHeader
         index="06 — موقف تفاعلي"
         title="وصلك هذا التهديد. ماذا تفعل؟"
-        lede="اختر ردك. كل مسار يفتح نتيجة مختلفة، والمسار الصحيح ينقلك إلى روابط الإبلاغ نفسها."
         art="/art/sticker-phone.jpg"
         artAlt="ملصق رفض الابتزاز"
       />
@@ -742,7 +734,6 @@ export function QuizStage() {
       <StageHeader
         index="07 — اختبر"
         title="هل تملك الإجابة قبل أن تحتاجها؟"
-        lede="خمس أسئلة من مادة الحملة ونص النظام. أجب ثم اعرض النتيجة مع سبب كل إجابة."
         art="/art/sticker-law.jpg"
         artAlt="ملصق ميزان العدالة"
       />
