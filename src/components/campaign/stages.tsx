@@ -536,7 +536,6 @@ export function ReportStage() {
       <StageHeader
         index="05 — الإبلاغ"
         title="أبلغ فورًا ولا تتأخر"
-        lede="كل تأخير يزيد الضرر. الأزرار التالية روابط حقيقية: متجر التطبيق، الاتصال، ونص النظام. ليست صورًا ثابتة."
         art="/art/sticker-report.jpg"
         artAlt="ملصق حفظ الدليل والإبلاغ"
       />
